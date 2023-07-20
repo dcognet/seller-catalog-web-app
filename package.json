@@ -5,12 +5,21 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "commit": "git-cz",
     "dev": "vite --port 3000",
     "format": "prettier --write .",
     "lint": "eslint --cache .",
-    "preview": "vite preview",
     "prepare": "husky install",
-    "commit": "git-cz"
+    "preview": "vite preview"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache",
+    "*.{js,jsx,css,md,html,svg}": "prettier --write"
   },
   "dependencies": {
     "eslint-plugin-cypress": "^2.13.3",
@@ -38,13 +47,9 @@
     "eslint-plugin-xss": "^0.1.12",
     "git-cz": "^4.9.0",
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "prettier": "2.8.8",
     "prettier-plugin-packagejson": "^2.4.5",
     "vite": "^4.4.0"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   }
 }
