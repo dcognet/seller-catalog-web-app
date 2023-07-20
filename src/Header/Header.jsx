@@ -2,6 +2,12 @@ import { useDarkLightMode } from "@/hooks";
 import "./header.css";
 import clsx from "clsx";
 import { Button } from "@mui/material";
+import styled from "@emotion/styled";
+
+const NavLink = styled.a`
+  text-decoration: none;
+  color: ${({ dark }) => (dark ? "#0d293f" : "white")};
+`;
 
 export default function Header() {
   const [currentMode, { toggleMode }] = useDarkLightMode();
@@ -11,20 +17,14 @@ export default function Header() {
       <nav>
         <ol className="navList">
           <li className="navListItem">
-            <a
-              className={clsx("navLink", { light: currentMode })}
-              href="/page1"
-            >
+            <NavLink href="/page1" dark={currentMode}>
               Page 1
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a
-              className={clsx("navLink", { light: currentMode })}
-              href="/page2"
-            >
+            <NavLink href="/page2" dark={currentMode}>
               Page 2
-            </a>
+            </NavLink>
           </li>
         </ol>
       </nav>

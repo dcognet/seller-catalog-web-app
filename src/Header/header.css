@@ -35,13 +35,3 @@ header.light {
 .navListItem {
   padding-right: 1rem;
 }
-
-.navLink {
-  text-decoration: none;
-  color: white;
-}
-
-.light {
-  text-decoration: none;
-  color: #0d293f;
-}
