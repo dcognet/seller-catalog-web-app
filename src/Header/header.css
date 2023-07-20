@@ -3,15 +3,26 @@ header {
   background-color: #0d293f;
   display: flex;
   align-items: center;
+  padding: 0 1rem;
 }
 
 header nav {
   flex-grow: 1;
 }
 
+header.light {
+  background-color: white;
+}
+
 .logo {
   font-size: 1rem;
   color: white;
+  padding: 0 2rem;
+}
+
+.logo.light {
+  font-size: 1rem;
+  color: #0d293f;
   padding: 0 2rem;
 }
 
@@ -28,4 +39,9 @@ header nav {
 .navLink {
   text-decoration: none;
   color: white;
+}
+
+.light {
+  text-decoration: none;
+  color: #0d293f;
 }

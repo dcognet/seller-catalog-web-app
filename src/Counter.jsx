@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { number } from "prop-types";
-import useCounter from "./hooks/useCounter";
+import { useCounter } from "@/hooks";
 
 export default function Counter({ initValue = 0, step = 1 }) {
   const [counter, { increment, decrement }] = useCounter(initValue, step);

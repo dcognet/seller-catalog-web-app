@@ -21,7 +21,12 @@ module.exports = {
     },
   ],
   ignorePatterns: ["dist", "storybook-static", "coverage"],
-  settings: { react: { version: "18.2" } },
+  settings: {
+    react: { version: "18.2" },
+    "import/resolver": {
+      alias: [["@", "./src"]],
+    },
+  },
   plugins: ["react-refresh", "simple-import-sort"],
   rules: {
     "react-refresh/only-export-components": [
