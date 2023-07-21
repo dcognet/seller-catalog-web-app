@@ -5,15 +5,11 @@ import {
   Button,
   Container,
   IconButton,
-  Menu,
-  MenuItem,
   Toolbar,
   Tooltip,
   Typography,
 } from "@mui/material";
-import AdbIcon from "@mui/icons-material/Adb";
-import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const mainMenu = [
   {
@@ -42,7 +38,11 @@ const mainMenu = [
   },
 ];
 
+// #3778B3
+//#8BABC4
 export default function Template() {
+  const { pathname } = useLocation();
+
   return (
     <>
       <AppBar position="static">
@@ -56,9 +56,6 @@ export default function Template() {
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
               }}
@@ -66,25 +63,14 @@ export default function Template() {
               Seller Catalog
             </Typography>
 
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-            </Box>
-            <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Box sx={{ flexGrow: 1, display: "flex" }}>
               {mainMenu.map(({ name, url }) => (
                 <Button
                   key={url}
                   component={Link}
                   to={url}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  variant="navigation"
+                  color={pathname === url ? "active" : undefined}
                 >
                   {name}
                 </Button>
@@ -95,7 +81,7 @@ export default function Template() {
               <IconButton sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"
-                  src="christopher-campbell-rDEOVtE7vOs-unsplash.jpg"
+                  src="debbie-molle-6DSID8Ey9-U-unsplash.jpg"
                 />
               </IconButton>
             </Tooltip>
