@@ -3,16 +3,17 @@ import "./header.css";
 import clsx from "clsx";
 import { Button } from "@mui/material";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
   text-decoration: none;
-  color: ${({ dark }) => (dark ? "#0d293f" : "white")};
+  color: ${({ dark }) => (dark == "true" ? "#0d293f" : "white")};
 `;
 
 const mainMenu = [
   {
     name: "Produit",
-    url: "/product",
+    url: "/",
   },
   {
     name: "Commandes",
@@ -45,7 +46,7 @@ export default function Header() {
         <ol className="navList">
           {mainMenu.map(({ name, url }) => (
             <li key={url} className="navListItem">
-              <NavLink href={url} dark={currentMode}>
+              <NavLink to={url} dark={`${currentMode}`}>
                 {name}
               </NavLink>
             </li>
