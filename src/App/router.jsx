@@ -1,34 +1,36 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Template } from "@/Template";
+import { MainTemplate } from "../ds/Templates";
+import { ProductsPage } from "@/products/ProductsPage";
+import { OrdersPage } from "@/orders/OrdersPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Template />,
+    element: <MainTemplate />,
     children: [
       {
         index: true,
-        element: <div>Hello world!</div>,
+        element: <ProductsPage />,
       },
       {
         path: "/orders",
-        element: <div>Hello world!</div>,
+        element: <OrdersPage />,
       },
       {
         path: "financial",
-        element: <div>Hello world!</div>,
+        element: <div>financial</div>,
       },
       {
         path: "reports",
-        element: <div>Hello world!</div>,
+        element: <div>reports</div>,
       },
       {
         path: "marketplaces",
-        element: <div>Hello world!</div>,
+        element: <div>marketplaces</div>,
       },
       {
         path: "messages",
-        element: <div>Hello world!</div>,
+        element: <div>Messages</div>,
       },
     ],
   },

@@ -9,7 +9,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, Outlet } from "react-router-dom";
 
 const mainMenu = [
   {
@@ -40,7 +40,7 @@ const mainMenu = [
 
 // #3778B3
 //#8BABC4
-export default function Template() {
+export default function MainTemplate() {
   const { pathname } = useLocation();
 
   return (
@@ -88,6 +88,7 @@ export default function Template() {
           </Toolbar>
         </Container>
       </AppBar>
+      <Outlet></Outlet>
     </>
   );
 }
