@@ -1,10 +1,11 @@
 import { Box } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
-import db from "../../db.json";
 import ProductImage from "../ProductImage";
 import ProductPrice from "../ProductPrice/";
 import ProductCondition from "./../ProductCondition/";
 import { withRow } from "../../hoc";
+import { CircularProgress, Backdrop } from "@mui/material";
+import { useProducts } from "../../hooks";
 
 const columns = [
   {
@@ -27,19 +28,32 @@ const columns = [
 ];
 
 export default function ProductsPage() {
+  const { isLoading, products } = useProducts();
+
+  if (isLoading) {
+    return (
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={true}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+    );
+  }
+
   return (
     <Box sx={{ height: "100%", width: "100%" }}>
       <DataGrid
         columns={columns}
-        rows={db.products}
+        rows={products}
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 10,
+              pageSize: 15,
             },
           },
         }}
-        pageSizeOptions={[10]}
+        pageSizeOptions={[15]}
         disableRowSelectionOnClick
       />
     </Box>
