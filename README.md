@@ -1,19 +1,27 @@
 # Seller Catalog Web App
 
- Getting Started
+## Getting Started
 
- Install the dependencies
+Create a .env file
 
- ```shell
- yarn install
- ```
+```shell
+VITE_API_URL=http://localhost:3001
+```
+
+Install the dependencies
+
+```shell
+yarn install
+```
 
 Run the dev server
- ```shell
- yarn dev
- ```
+
+```shell
+yarn dev
+```
 
 Commit using
- ```shell
- yarn commit
- ```
+
+```shell
+yarn commit
+```
