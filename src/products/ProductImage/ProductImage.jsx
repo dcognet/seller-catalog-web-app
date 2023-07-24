@@ -1,12 +1,14 @@
-import { shape, string } from "prop-types";
+import { string } from "prop-types";
+import withRow from "./../../hoc/withRow";
 
-export default function ProductImage({ row }) {
-  return <img src={row.imageUrl} alt={row.name} />;
+function ProductImage({ imageUrl, name }) {
+  return <img src={imageUrl} alt={name} />;
 }
 
 ProductImage.propTypes = {
-  row: shape({
-    imageUrl: string,
-    name: string,
-  }),
+  imageUrl: string,
+  name: string,
 };
+
+const RowPProductImage = withRow(ProductImage);
+export default RowPProductImage;

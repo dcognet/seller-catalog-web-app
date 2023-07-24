@@ -1,11 +1,13 @@
-import { oneOf, shape } from "prop-types";
+import { oneOf } from "prop-types";
+import withRow from "./../../hoc/withRow";
 
-export default function ProductCondition({ row }) {
-  return row.condition === "used" ? "Neuf" : "Occasion";
+function ProductCondition({ condition }) {
+  return condition === "used" ? "Neuf" : "Occasion";
 }
 
 ProductCondition.propTypes = {
-  row: shape({
-    condition: oneOf(["used", "new"]),
-  }),
+  condition: oneOf(["used", "new"]),
 };
+
+const RowProductCondition = withRow(ProductCondition);
+export default RowProductCondition;

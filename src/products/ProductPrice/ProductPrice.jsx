@@ -1,10 +1,11 @@
 import { shape, string } from "prop-types";
+import withRow from "./../../hoc/withRow";
 
-export default function ProductPrice({ row }) {
+function ProductPrice({ price }) {
   return new Intl.NumberFormat(window.navigator.language, {
     style: "currency",
     currency: "EUR",
-  }).format(row.price);
+  }).format(price);
 }
 
 ProductPrice.propTypes = {
@@ -12,3 +13,6 @@ ProductPrice.propTypes = {
     price: string,
   }),
 };
+
+const RowProductPrice = withRow(ProductPrice);
+export default RowProductPrice;
