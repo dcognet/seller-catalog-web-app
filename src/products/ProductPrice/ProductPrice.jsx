@@ -1,17 +1,13 @@
-import { shape, string } from "prop-types";
-import withRow from "./../../hoc/withRow";
+import { number } from "prop-types";
+import { withRow } from "./../../hoc";
+import { Price } from "../../ds/atoms";
 
 function ProductPrice({ price }) {
-  return new Intl.NumberFormat(window.navigator.language, {
-    style: "currency",
-    currency: "EUR",
-  }).format(price);
+  return <Price value={price} />;
 }
 
 ProductPrice.propTypes = {
-  row: shape({
-    price: string,
-  }),
+  price: number,
 };
 
 const RowProductPrice = withRow(ProductPrice);
