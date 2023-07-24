@@ -4,7 +4,7 @@ import ProductImage from "../ProductImage";
 import ProductPrice from "../ProductPrice/";
 import ProductCondition from "./../ProductCondition/";
 import { withRow } from "../../hoc";
-import { CircularProgress, Backdrop } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 import { useProducts } from "../../hooks";
 
 const columns = [
@@ -32,12 +32,9 @@ export default function ProductsPage() {
 
   if (isLoading) {
     return (
-      <Backdrop
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={true}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
+      <Box sx={{ width: "100%" }}>
+        <LinearProgress />
+      </Box>
     );
   }
 
