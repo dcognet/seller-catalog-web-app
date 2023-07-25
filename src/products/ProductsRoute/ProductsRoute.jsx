@@ -4,10 +4,16 @@ import ProductImage from "../ProductImage";
 import ProductPrice from "../ProductPrice";
 import ProductCondition from "../ProductCondition";
 import { withRow } from "../../hoc";
-import { LinearProgress, Typography } from "@mui/material";
+import {
+  Button,
+  InputAdornment,
+  LinearProgress,
+  TextField,
+} from "@mui/material";
 import { useProducts } from "../../hooks";
 import ProductDescription from "../ProductDescription";
 import Page from "./../../ds/Pages";
+import { Search } from "@mui/icons-material";
 
 const columns = [
   {
@@ -38,6 +44,21 @@ export default function ProductsRoute() {
   return (
     <>
       <Page title="Gestion du catalog">
+        <Box sx={{ ml: 21, py: 8 }}>
+          <TextField
+            id="input-with-icon-textfield"
+            placeholder="Recherche par GTIN/SKU"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Search />
+                </InputAdornment>
+              ),
+            }}
+            sx={{ width: 630 }}
+          />
+          <Button sx={{ ml: 1 }}>Rechercher</Button>
+        </Box>
         <Box sx={{ height: "100%", width: "100%" }}>
           <DataGrid
             columns={columns}

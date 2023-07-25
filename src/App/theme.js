@@ -20,6 +20,10 @@ export const theme = createTheme({
   components: {
     // Name of the component
     MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+        variant: "contained",
+      },
       styleOverrides: {
         root: {
           // Some CSS
@@ -50,5 +54,11 @@ export const theme = createTheme({
         },
       ],
     }, // Name of the slot
+    MuiTextField: {
+      defaultProps: {
+        variant: "outlined",
+        size: "small",
+      },
+    },
   },
 });
