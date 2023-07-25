@@ -25,3 +25,7 @@ Commit using
 ```shell
 yarn commit
 ```
+
+## Design system
+
+We want to use atomic design approche. But as we just began this app, the 'page' compoent won't followw this approach.
