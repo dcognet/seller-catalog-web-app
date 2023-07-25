@@ -1,12 +1,12 @@
 import { Box } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
 import ProductImage from "../ProductImage";
-import ProductPrice from "../ProductPrice/";
-import ProductCondition from "./../ProductCondition/";
+import ProductPrice from "../ProductPrice";
+import ProductCondition from "../ProductCondition";
 import { withRow } from "../../hoc";
 import { LinearProgress } from "@mui/material";
 import { useProducts } from "../../hooks";
-import ProductDescription from "./../ProductDescription/";
+import ProductDescription from "../ProductDescription";
 
 const columns = [
   {
@@ -29,7 +29,7 @@ const columns = [
   { field: "stock", headerName: "Stock", type: "number" },
 ];
 
-export default function ProductsPage() {
+export default function ProductsRoute() {
   const { isLoading, products } = useProducts();
 
   if (isLoading) return <LinearProgress />;

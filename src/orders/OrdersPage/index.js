@@ -1,1 +1,1 @@
-export { default as OrdersPage } from "./OrdersPage.jsx";
+export { default as OrdersRoute } from "./OrdersRoute.jsx";
