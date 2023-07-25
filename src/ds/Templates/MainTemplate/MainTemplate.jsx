@@ -15,28 +15,38 @@ const mainMenu = [
   {
     name: "Produit",
     url: "/",
+    domain: "products",
   },
   {
     name: "Commandes",
     url: "/orders",
+    domain: "orders",
   },
   {
     name: "Finance",
     url: "/financial",
+    domain: "financial",
   },
   {
     name: "Rapports",
     url: "/reports",
+    domain: "reports",
   },
   {
     name: "Messages",
     url: "/messages",
+    domain: "messages",
   },
   {
     name: "Marketplaces",
     url: "/marketplaces",
+    domain: "marketplaces",
   },
 ];
+
+const isCurrentTab = ({ pathname, url, domain }) => {
+  return url === pathname || pathname.startsWith("/" + domain);
+};
 
 // #3778B3
 //#8BABC4
@@ -64,13 +74,17 @@ export default function MainTemplate() {
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: "flex" }}>
-              {mainMenu.map(({ name, url }) => (
+              {mainMenu.map(({ name, url, domain }) => (
                 <Button
                   key={url}
                   component={Link}
                   to={url}
                   variant="navigation"
-                  color={pathname === url ? "active" : undefined}
+                  color={
+                    isCurrentTab({ pathname, url, domain })
+                      ? "active"
+                      : undefined
+                  }
                 >
                   {name}
                 </Button>

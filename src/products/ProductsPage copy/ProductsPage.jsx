@@ -1,12 +1,12 @@
 import { Box } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
 import ProductImage from "../ProductImage";
-import ProductPrice from "../ProductPrice/";
-import ProductCondition from "./../ProductCondition/";
+import ProductPrice from "../ProductPrice";
+import ProductCondition from "../ProductCondition";
 import { withRow } from "../../hoc";
 import { LinearProgress } from "@mui/material";
 import { useProducts } from "../../hooks";
-import ProductDescription from "./../ProductDescription/";
+import ProductDescription from "../ProductDescription";
 
 const columns = [
   {
