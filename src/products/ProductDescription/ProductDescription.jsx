@@ -6,7 +6,7 @@ import LargeField from "./../../ds/atoms/LargeField/";
 export default function ProductDescription({ id, name, description }) {
   return (
     <LargeField>
-      <Typography component={Link} to={`products/${id}`}>
+      <Typography component={Link} to={`/products/${id}`}>
         {name}
       </Typography>
       <br></br>
