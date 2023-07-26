@@ -1,11 +1,17 @@
 import { DataGrid } from "@mui/x-data-grid";
 import Page from "../ds/Pages";
 import { productColumns } from "../products/productColumns";
-import { Box } from "@mui/material";
+import { Box, LinearProgress } from "@mui/material";
 import FavouritesContext from "../contexts";
+import { useProductsByIds } from "../hooks";
 
 export default function FavouritesRoute() {
-  const products = FavouritesContext.useContext();
+  const { favourites } = FavouritesContext.useContext();
+  const { isLoading, products } = useProductsByIds({
+    ids: favourites,
+  });
+
+  if (isLoading) return <LinearProgress />;
 
   return (
     <Page title="Mes favoris">

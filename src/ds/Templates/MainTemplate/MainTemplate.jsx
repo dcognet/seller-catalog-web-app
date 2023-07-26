@@ -18,6 +18,11 @@ const mainMenu = [
     domain: "products",
   },
   {
+    name: "Favoris",
+    url: "/favourites",
+    domain: "favourites",
+  },
+  {
     name: "Commandes",
     url: "/orders",
     domain: "orders",
@@ -26,11 +31,6 @@ const mainMenu = [
     name: "Finance",
     url: "/financial",
     domain: "financial",
-  },
-  {
-    name: "Favoris",
-    url: "/favourites",
-    domain: "favourites",
   },
   {
     name: "Messages",
