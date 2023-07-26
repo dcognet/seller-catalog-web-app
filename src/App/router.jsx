@@ -4,6 +4,7 @@ import { ProductsRoute } from "@/products/ProductsRoute";
 import ProductRoute from "./../products/ProductRoute";
 import { OrdersRoute } from "@/orders/OrdersPage";
 import Page from "./../ds/Pages/";
+import FavouritesRoute from "../favourites/";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "favourites",
-        element: <Page title="Favoris"></Page>,
+        element: <FavouritesRoute />,
       },
       {
         path: "reports",

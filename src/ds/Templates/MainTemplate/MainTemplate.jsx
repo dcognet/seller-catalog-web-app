@@ -28,9 +28,9 @@ const mainMenu = [
     domain: "financial",
   },
   {
-    name: "Rapports",
-    url: "/reports",
-    domain: "reports",
+    name: "Favoris",
+    url: "/favourites",
+    domain: "favourites",
   },
   {
     name: "Messages",
