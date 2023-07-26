@@ -14,6 +14,7 @@ import { useProducts, useSearch } from "../../hooks";
 import ProductDescription from "../ProductDescription";
 import Page from "./../../ds/Pages";
 import { Search } from "@mui/icons-material";
+import ProductActions from "./../ProductActions/";
 
 const columns = [
   {
@@ -34,6 +35,12 @@ const columns = [
   },
   { field: "price", headerName: "Prix", renderCell: withRow(ProductPrice) },
   { field: "stock", headerName: "Stock", type: "number" },
+  {
+    field: "action",
+    headerName: "Actions",
+    sortable: false,
+    renderCell: withRow(ProductActions),
+  },
 ];
 
 export default function ProductsRoute() {
