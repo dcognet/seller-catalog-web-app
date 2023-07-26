@@ -9,6 +9,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
 import { QueryClientProvider } from "@tanstack/react-query";
 import queryClient from "./queryClient";
+import FavouritesContext from "./../contexts/";
 
 export default function App() {
   return (
@@ -16,7 +17,9 @@ export default function App() {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <RouterProvider router={router} />
+          <FavouritesContext.Provider>
+            <RouterProvider router={router} />
+          </FavouritesContext.Provider>
         </ThemeProvider>
       </QueryClientProvider>
     </>
