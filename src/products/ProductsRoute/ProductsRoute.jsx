@@ -10,12 +10,10 @@ import {
   LinearProgress,
   TextField,
 } from "@mui/material";
-import { useProducts } from "../../hooks";
+import { useProducts, useSearch } from "../../hooks";
 import ProductDescription from "../ProductDescription";
 import Page from "./../../ds/Pages";
 import { Search } from "@mui/icons-material";
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
 
 const columns = [
   {
@@ -39,20 +37,22 @@ const columns = [
 ];
 
 export default function ProductsRoute() {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const [search, setSearch] = useState(searchParams.get("q") || "");
-  const { isLoading, products, refetch } = useProducts({ search });
+  const [searchTerm, { onSearchChange, searchSubmit }] = useSearch();
+  const { isLoading, products, refetch } = useProducts({ search: searchTerm });
 
   if (isLoading) return <LinearProgress />;
 
   return (
     <>
       <Page title="Gestion du catalog">
-        <Box sx={{ ml: 21, py: 8 }}>
+        <Box
+          sx={{ ml: 21, py: 8 }}
+          component="form"
+          onSubmit={searchSubmit(refetch)}
+        >
           <TextField
-            value={search}
-            onChange={(event) => setSearch(event.currentTarget.value)}
+            value={searchTerm}
+            onChange={onSearchChange}
             id="input-with-icon-textfield"
             placeholder="Recherche par GTIN/SKU"
             InputProps={{
@@ -63,22 +63,9 @@ export default function ProductsRoute() {
               ),
             }}
             sx={{ width: 630 }}
-            onKeyDown={(event) => {
-              console.log(event.key);
-              if (event.key == "Enter") {
-                setSearchParams({ q: search });
-                refetch();
-              }
-            }}
             autoComplete="off"
           />
-          <Button
-            sx={{ ml: 1 }}
-            onClick={() => {
-              setSearchParams({ q: search });
-              refetch();
-            }}
-          >
+          <Button sx={{ ml: 1 }} onClick={searchSubmit(refetch)}>
             Rechercher
           </Button>
         </Box>
