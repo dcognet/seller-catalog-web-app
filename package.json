@@ -13,7 +13,7 @@
     "lint": "eslint --cache .",
     "prepare": "husky install",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest --changed"
   },
   "commitlint": {
     "extends": [
