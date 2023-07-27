@@ -13,16 +13,21 @@ import {
   Typography,
 } from "@mui/material";
 import Page from "../../ds/Pages/";
-import { Edit, Favorite } from "@mui/icons-material";
+import { Edit, Favorite, FavoriteBorder } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import { Price } from "../../ds/atoms";
 import ProductCondition from "../ProductCondition/";
+import CustomFavouritesContext from "./../../contexts/";
 
 const defaultRenderCell = ({ value }) => value;
 
 export default function ProductRoute() {
   let { id } = useParams();
+  const { favourites, toggleFavourites } = CustomFavouritesContext.useContext();
+
   const { isLoading, products: product } = useProducts({ id });
+
+  const isFav = favourites.includes(id);
 
   if (isLoading) return <LinearProgress />;
 
@@ -47,8 +52,12 @@ export default function ProductRoute() {
         Beatae quia excepturi tempora accusantium.
       </Alert>
       <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1, my: 2 }}>
-        <Button variant="outlined" startIcon={<Favorite />}>
-          Ajouter aux favoris
+        <Button
+          variant="outlined"
+          startIcon={isFav ? <Favorite /> : <FavoriteBorder />}
+          onClick={() => toggleFavourites({ id })}
+        >
+          {isFav ? "Retirer des favoris" : "Ajouter aux favoris"}
         </Button>
 
         <Button startIcon={<Edit />}>Editer</Button>

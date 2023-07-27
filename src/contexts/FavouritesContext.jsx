@@ -3,6 +3,7 @@ import React, { useReducer } from "react";
 
 const ADD_TO_FAVOURITES = "ADD_TO_FAVOURITES";
 const REMOVE_FROM_FAVOURITES = "REMOVE_FROM_FAVOURITES";
+const TOGGLE_FAVOURITE = "TOGGLE_FAVOURITE";
 
 const initialStore = [];
 
@@ -13,26 +14,25 @@ const useContext = () => React.useContext(FavouritesContext);
 
 const favReducer = (state, action) => {
   switch (action.type) {
-    case ADD_TO_FAVOURITES:
-      return state.filter((i) => i === action.id).length === 0
-        ? [...state, action.id]
-        : state;
-    case REMOVE_FROM_FAVOURITES:
-      return state.filter(({ id }) => id === action.id);
+    case TOGGLE_FAVOURITE:
+      if (state.includes(action.id)) {
+        return state.filter((id) => id !== action.id);
+      }
+      return [...state, action.id];
   }
   return state;
 };
 
 const Provider = ({ children }) => {
   const [favourites, dispatch] = useReducer(favReducer, initialStore);
-
-  const addToFavourites = ({ id }) => dispatch({ type: ADD_TO_FAVOURITES, id });
-  const removeFromFavourites = ({ id }) =>
-    dispatch({ type: REMOVE_FROM_FAVOURITES, id });
+  const toggleFavourites = ({ id }) => dispatch({ type: TOGGLE_FAVOURITE, id });
 
   return (
     <FavouritesContext.Provider
-      value={{ favourites, addToFavourites, removeFromFavourites }}
+      value={{
+        favourites,
+        toggleFavourites,
+      }}
     >
       {children}
     </FavouritesContext.Provider>
