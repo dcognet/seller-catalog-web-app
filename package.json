@@ -65,6 +65,7 @@
     "eslint-plugin-security": "^1.7.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-testing-library": "^5.11.0",
+    "eslint-plugin-vitest": "^0.2.8",
     "eslint-plugin-xss": "^0.1.12",
     "git-cz": "^4.9.0",
     "husky": "^8.0.3",
