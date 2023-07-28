@@ -50,6 +50,10 @@ const isCurrentTab = ({ pathname, url, domain }) => {
 
 // #3778B3
 //#8BABC4
+/**
+ *
+ * The main tempalte of ....
+ */
 export default function MainTemplate() {
   const { pathname } = useLocation();
 

@@ -4,6 +4,12 @@ export default {
   title: "Price",
   component: Price,
   tags: ["autodocs"],
+  argTypes: {
+    currency: {
+      options: ["EUR", "USD"],
+      control: { type: "radio" },
+    },
+  },
 };
 
 export const Main = {
