@@ -1,32 +1,31 @@
-import { render, screen } from "@testing-library/react";
-import ProductRoute from "./ProductRoute";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import CustomFavouritesContext from "../../contexts/FavouritesContext";
-import { RouterProvider, createMemoryRouter } from "react-router";
+import { screen } from "@testing-library/react";
+
+import ProductRoute from "./ProductRoute.jsx";
+import CustomFavouritesContext from "../../contexts/FavouritesContext.jsx";
+import { render } from "../../test-utils/index.jsx";
+import { vi } from "vitest";
 
 describe("Page", () => {
-  it("render correctly", () => {
-    const routes = [
-      {
-        path: "/product/:id",
-        element: (
-          <QueryClientProvider client={new QueryClient()}>
-            <CustomFavouritesContext.Provider>
-              <ProductRoute />
-            </CustomFavouritesContext.Provider>
-          </QueryClientProvider>
-        ),
-      },
-    ];
-    const router = createMemoryRouter(routes, {
-      initialEntries: ["/product/productId"],
-      initialIndex: 0,
+  it("render correctly", async () => {
+    vi.stubGlobal("navigator", { language: "fr-FR" });
+    render(<ProductRoute />, {
+      initialEntries: ["/products/productId"],
+      path: "/products/:id",
+      wrapper: CustomFavouritesContext.Provider,
     });
 
-    render(<RouterProvider router={router} />);
+    expect(screen.getByRole("progressbar")).toBeInTheDocument();
 
     expect(
-      screen.getByRole("heading", { name: "productId" })
+      await screen.findByRole("heading", { name: "Product: product name" })
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("button", { name: "Ajouter aux favoris" })
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("row", { name: /Prix 10,00.€/i })
     ).toBeInTheDocument();
   });
 });

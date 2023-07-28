@@ -63,7 +63,7 @@ export default function ProductRoute() {
         <Button startIcon={<Edit />}>Editer</Button>
       </Box>
 
-      <Box component="artcile" sx={{ display: "flex", gap: 2 }}>
+      <Box component="article" sx={{ display: "flex", gap: 2 }}>
         <img src={product.imageUrl} alt={product.name} width="300" />
         <TableContainer>
           <Typography variant="h6">Propriétés</Typography>
